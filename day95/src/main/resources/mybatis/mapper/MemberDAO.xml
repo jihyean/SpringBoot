@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <mapper namespace="com.jhyun.app.InterfaceMemberDAO">
+      <select id="selectAll" resultType="com.jhyun.app.BoardDTO">
+         SELECT * FROM MEMBER
+      </select>
+      <select id="selectOne" resultType="com.jhyun.app.MemberDTO">
+         SELECT * FROM MEMBER WHERE MID=#{data1} AND MPW=#{data2}
+      </select>
+
+</mapper>
