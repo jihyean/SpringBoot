@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jhyun.app.InterfaceMemberDAO">
+	   
+	<select id="selectAll" resultType="com.jhyun.app.MemberDTO">
+		SELECT * FROM MEMBER
+	</select>
+	
+	
+	<select id="selectOne" resultType="com.jhyun.app.MemberDTO">
+		
+		<if test="mSearch != '로그인'">
+    		SELECT * FROM MEMBER WHERE MID=#{mid}
+		</if>
+		
+		<if test="mSearch == '로그인'">
+    		SELECT * FROM MEMBER WHERE MID=#{mid} AND MPW=#{mpw}
+		</if>
+		
+	</select>
+	
+	
+	<insert id="insert">
+		INSERT INTO MEMBER (MID, MPW) VALUES(#{mid}, #{mpw})
+	</insert>
+		
+	<update id="update">
+		UPDATE MEMBER SET MPW = #{mpw} WHERE MID = #{mid}
+	</update>
+	<delete id="delete">
+		DELETE FROM MEMBER WHERE MID =#{param1}
+	</delete>
+
+</mapper>
